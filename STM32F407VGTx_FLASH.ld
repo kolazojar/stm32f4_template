@@ -1,7 +1,6 @@
 /*
 *****************************************************************************
 **
-
 **  File        : LinkerScript.ld
 **
 **  Abstract    : Linker script for STM32F407VGTx Device with
@@ -185,5 +184,3 @@ SECTIONS
 
   .ARM.attributes 0 : { *(.ARM.attributes) }
 }
-
-

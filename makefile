@@ -2,34 +2,34 @@
 # Written by Matt Krol
 
 # Directory Structure
-OBJ_DIR = obj
-SRC_DIR = src
-INC_DIR = inc
-BIN_DIR = bin
+OBJ_DIR=obj
+SRC_DIR=src
+INC_DIR=inc
+BIN_DIR=bin
 
 # Final Executable Name
-TARGET = runme
+TARGET=runme
 
 # Define File Variables
-SOURCES := $(wildcard $(SRC_DIR)/*)
-OBJECTS := $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SOURCES))
-OBJECTS := $(patsubst $(SRC_DIR)%.s, $(OBJ_DIR)%.o, $(OBJECTS))
+SOURCES:=$(wildcard $(SRC_DIR)/*)
+OBJECTS:= $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SOURCES))
+OBJECTS:= $(patsubst $(SRC_DIR)%.s, $(OBJ_DIR)%.o, $(OBJECTS))
 
 # Linker Script Location
-LD_SCRIPT = STM32F407VGTx_FLASH.ld
+LD_SCRIPT=STM32F407VGTx_FLASH.ld
 
 # Define Toolchain Variables
-CC = arm-none-eabi-gcc
-OBJCOPY = arm-none-eabi-objcopy
+CC=arm-none-eabi-gcc
+OBJCOPY=arm-none-eabi-objcopy
 STFLASH = st-flash
 
 # Flash Start Address
-FLASH_ADDR = 0x08000000
+FLASH_ADDR=0x08000000
 
 # Compile and Link Flags
-CFLAGS = -g -Wall -I$(INC_DIR)
-LDFLAGS = -Wl,-Map=$(OBJ_DIR)/$(TARGET).map,-T$(LD_SCRIPT),-lnosys,-lm,-lc,-lgcc
-CPU = -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16
+CFLAGS=-g -Wall -I$(INC_DIR)
+LDFLAGS=-Wl,-Map=$(OBJ_DIR)/$(TARGET).map,-T$(LD_SCRIPT),-lnosys,-lm,-lc,-lgcc
+CPU=-mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16
 
 # Implicit Rules
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
